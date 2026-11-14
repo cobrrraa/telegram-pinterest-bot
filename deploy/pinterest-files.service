@@ -1,0 +1,22 @@
+[Unit]
+Description=Photo file server for Pinterest CSV bulk upload
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=pinbot
+WorkingDirectory=/opt/pinterest-bot
+ExecStart=/opt/pinterest-bot/.venv/bin/python file_server.py
+# Порт 80 без root.
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+Restart=always
+RestartSec=5
+MemoryMax=128M
+CPUQuota=25%
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

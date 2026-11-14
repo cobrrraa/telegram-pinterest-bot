@@ -1,0 +1,10 @@
+.git
+.env
+.venv
+data
+public
+archive
+export
+__pycache__
+*.csv
+*.zip
